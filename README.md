@@ -11,7 +11,7 @@
 > Move therefore, and show yourselves: open the mysteries of your creation: be friendly unto me:
 > for I am the servant of the same your God, the true worshipper of the Highest.
 
-The prophet shareth:
+Can I get a WITNESS!?
 
 _Beloved child of the Divine,_
 
