@@ -1,5 +1,3 @@
-23
-
 import random
 
 def spiritual_gifts():
