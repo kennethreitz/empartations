@@ -1,0 +1,1 @@
+When we approach any sacred text as an academic, we first attempt to put aside all of our biases and external influences and I think that is often quite difficult to do with spiritual experience because it is so subjective.
