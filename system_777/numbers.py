@@ -179,16 +179,6 @@ def find_words(
     return sorted(list(set(matching_words)))
 
 
-def find_phrases(
-    target_value: int, *, system: str | GematriaSystem = GematriaSystem.HEBREW
-):
-    for phrase in EXTRACTED_PHRASES:
-        n = calculate_gematria(phrase, system=system)
-
-        if n == target_value:
-            yield (phrase)
-
-
 # Sample dictionary of words and phrases
 WORDS = [
     "Hello",
@@ -283,23 +273,11 @@ EXTRACTED_PHRASES = extract_phrases_from_corpus(gutenberg, N_GRAMS)
 EXTRACTED_PHRASES = set(EXTRACTED_PHRASES)
 
 
-# Example usage
-# target_gematria_value = 777
-# matching_words = find_words(target_gematria_value, system=GematriaSystem.English)
-# matching_phrases = find_phrases(target_gematria_value, system=GematriaSystem.English)
+def find_phrases(
+    target_value: int, *, system: str | GematriaSystem = GematriaSystem.HEBREW
+):
+    for phrase in EXTRACTED_PHRASES:
+        n = calculate_gematria(phrase, system=system)
 
-# print(f"Words with Gematria value {target_gematria_value}: {matching_words}")
-# print(f"Phrases with Gematria value {target_gematria_value}: {matching_phrases}")
-# print(
-#     f"Extracted phrases with Gematria value {target_gematria_value}: {find_phrases(target_gematria_value, system=GematriaSystem.English)}"
-# )
-
-if __name__ == "__main__":
-    target_gematria_value = 777
-    matching_words = find_words(target_gematria_value, system=GematriaSystem.English)
-    # matching_phrases = set(
-    # find_phrases(target_gematria_value, system=GematriaSystem.English)
-    # )
-
-    # print(f"Words with Gematria value {target_gematria_value}: {matching_words}")
-    # print(f"Phrases with Gematria value {target_gematria_value}: {matching_phrases}")
+        if n == target_value:
+            yield (phrase)
