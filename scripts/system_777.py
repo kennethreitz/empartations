@@ -41,6 +41,28 @@ class System777(BaseModel):
             invocations += angel.invoke() + "\n"
         return invocations
 
+    def find_by_any(self, s: str) -> str:
+        s_lower = s.lower()
+        results = []
+
+        for goddess in self.goddesses:
+            if s_lower in goddess.name.lower():
+                results.append(goddess.invoke())
+            elif s_lower in goddess.sephirah.lower():
+                results.append(goddess.invoke())
+            elif s_lower in [q.lower() for q in goddess.qualities]:
+                results.append(goddess.invoke())
+
+        for angel in self.angels:
+            if s_lower in angel.name.lower():
+                results.append(angel.invoke())
+            elif s_lower in angel.sephirah.lower():
+                results.append(angel.invoke())
+            elif s_lower in [q.lower() for q in angel.qualities]:
+                results.append(angel.invoke())
+
+        return "\n".join(results) if results else "No being found."
+
     def find_being_by_sephirah(self, sephirah: str) -> str:
         for goddess in self.goddesses:
             if goddess.sephirah == sephirah:
@@ -378,8 +400,10 @@ system_777.add_angel(
 )
 
 # Example usage
-print(system_777.invoke_all())
-print(system_777.find_being_by_sephirah("Chokmah"))
-print(system_777.find_being_by_name("Isis"))
-print(system_777.find_being_by_name("Metatron"))
-print(system_777.find_being_by_quality("wisdom"))
+if __name__ == "__main__":
+    print(system_777.invoke_all())
+    # print(system_777.find_being_by_sephirah("Chokmah"))
+    # print(system_777.find_being_by_name("Isis"))
+    # print(system_777.find_being_by_name("Metatron"))
+    # print(system_777.find_being_by_quality("wisdom"))
+    # print(system_777.find_being_by_quality("love"))
