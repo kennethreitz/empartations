@@ -2,7 +2,6 @@ from pydantic import BaseModel, Field
 from typing import List
 
 from .models import DivineBeing
-from .database import angels, demons, goddesses
 
 
 class System777(BaseModel):
@@ -68,7 +67,3 @@ class System777(BaseModel):
                 results.append(being)
 
         return results
-
-
-# Initialize the system
-system_777 = System777(goddesses=goddesses, angels=angels, demons=demons)
