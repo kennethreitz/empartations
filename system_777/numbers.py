@@ -129,7 +129,7 @@ MAPPINGS = {
 
 
 # Sample dictionary of words and phrases
-WORDS_AND_PHRASES = [
+WORDS = [
     "Hello",
     "World",
     "Python",
@@ -347,11 +347,48 @@ WORDS_AND_PHRASES = [
     "Iron",
 ]
 
+SHORT_PHRASES = [
+    "hello world",
+    "python programming",
+    "divine mystery",
+    "infinite love",
+    "harmony balance",
+    "justice truth",
+    "wisdom understanding",
+    "knowledge power",
+    "glory victory",
+    "eternal creation",
+    "universal galaxies",
+    "shining stars",
+    "solar planets",
+    "lunar moon",
+    "bright sun",
+    "life on earth",
+    "light in darkness",
+    "goodness and evil",
+    "freedom destiny",
+    "karma spirit",
+    "soul mind",
+    "body heart",
+    "strength courage",
+    "faith hope",
+    "charity grace",
+    "mercy compassion",
+    "peace joy",
+]
+
 try:
+    import nltk
     from nltk.corpus import words
+    from nltk.tokenize import word_tokenize
+
+    for corpus in ["words", "punkt"]:
+        if not nltk.download(corpus):
+            print(f"Failed to download the NLTK {corpus} corpus.")
+            sys.exit(1)
 
     # Load the NLTK words corpus
-    WORDS_AND_PHRASES += words.words()
+    WORDS += words.words()
 except ImportError:
     print("NLTK is not installed. Skipping NLTK words corpus.")
     sys.exit(1)
@@ -376,14 +413,28 @@ def calculate_gematria(
     return sum(MAPPINGS[system].get(char, 0) for char in name.lower())
 
 
-def find_words_with_gematria_value(
+def find_words(
     target_value: int, *, system: str | GematriaSystem = GematriaSystem.Hebrew
 ) -> List[str]:
 
     matching_phrases = []
 
-    for phrase in WORDS_AND_PHRASES:
+    for phrase in WORDS:
         if calculate_gematria(phrase, system) == target_value:
             matching_phrases.append(phrase.capitalize())
 
     return sorted(matching_phrases)
+
+
+def find_phrases(
+    target_value: int, *, system: str | GematriaSystem = GematriaSystem.Hebrew
+) -> List[str]:
+    matching_phrases = []
+    for phrase in SHORT_PHRASES:
+        tokenized_words = word_tokenize(phrase)
+        total_gematria = sum(
+            calculate_gematria(word, system=system) for word in tokenized_words
+        )
+        if total_gematria == target_value:
+            matching_phrases.append(phrase)
+    return matching_phrases
