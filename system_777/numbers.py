@@ -12,18 +12,20 @@ from nltk.util import ngrams
 for corpus in ["brown", "words", "punkt", "gutenberg"]:
     nltk.download(corpus)
 
+N_GRAMS = 5
+
 
 # Define the Gematria systems
 class GematriaSystem(Enum):
-    Hebrew = "Hebrew"
-    English = "English"
-    Simple = "Simple"
-    Reverse = "Reverse"
+    HEBREW = "Hebrew"
+    ENGLISH = "English"
+    SIMPLE = "Simple"
+    REVERSE = "Reverse"
 
 
 # Mappings for Hebrew, English, Simple, and Reverse Gematria
 MAPPINGS = {
-    GematriaSystem.Hebrew: {
+    GematriaSystem.HEBREW: {
         "a": 1,
         "b": 2,
         "c": 3,
@@ -51,7 +53,7 @@ MAPPINGS = {
         "y": 700,
         "z": 800,
     },
-    GematriaSystem.English: {
+    GematriaSystem.ENGLISH: {
         "a": 6,
         "b": 12,
         "c": 18,
@@ -79,7 +81,7 @@ MAPPINGS = {
         "y": 150,
         "z": 156,
     },
-    GematriaSystem.Simple: {
+    GematriaSystem.SIMPLE: {
         "a": 1,
         "b": 2,
         "c": 3,
@@ -107,7 +109,7 @@ MAPPINGS = {
         "y": 25,
         "z": 26,
     },
-    GematriaSystem.Reverse: {
+    GematriaSystem.REVERSE: {
         "a": 26,
         "b": 25,
         "c": 24,
@@ -141,7 +143,7 @@ MAPPINGS = {
 # Define the Gematria calculation functions
 @lru_cache(maxsize=None)
 def calculate_gematria(
-    name: str, system: str | GematriaSystem = GematriaSystem.Hebrew
+    name: str, system: str | GematriaSystem = GematriaSystem.HEBREW
 ) -> int:
     # Capitalize, in case all–lowered.
     try:
@@ -168,17 +170,17 @@ def extract_phrases_from_corpus(corpus, n: int) -> List[str]:
 
 # Define functions to find matching words and phrases
 def find_words(
-    target_value: int, *, system: str | GematriaSystem = GematriaSystem.Hebrew
-) -> List[str]:
+    target_value: int, *, system: str | GematriaSystem = GematriaSystem.HEBREW
+):
     matching_words = []
     for word in WORDS:
         if calculate_gematria(word, system) == target_value:
             matching_words.append(word.capitalize())
-    return sorted(matching_words)
+    return sorted(list(set(matching_words)))
 
 
 def find_phrases(
-    target_value: int, *, system: str | GematriaSystem = GematriaSystem.Hebrew
+    target_value: int, *, system: str | GematriaSystem = GematriaSystem.HEBREW
 ):
     for phrase in EXTRACTED_PHRASES:
         n = calculate_gematria(phrase, system=system)
@@ -276,9 +278,9 @@ SHORT_PHRASES = [
 WORDS += words.words()
 
 # Extract 3-gram phrases from the Brown corpus
-EXTRACTED_PHRASES = []
-for i in range(2, 4):
-    EXTRACTED_PHRASES += extract_phrases_from_corpus(gutenberg, i)
+EXTRACTED_PHRASES = extract_phrases_from_corpus(gutenberg, N_GRAMS)
+
+EXTRACTED_PHRASES = set(EXTRACTED_PHRASES)
 
 
 # Example usage
@@ -291,3 +293,13 @@ for i in range(2, 4):
 # print(
 #     f"Extracted phrases with Gematria value {target_gematria_value}: {find_phrases(target_gematria_value, system=GematriaSystem.English)}"
 # )
+
+if __name__ == "__main__":
+    target_gematria_value = 777
+    matching_words = find_words(target_gematria_value, system=GematriaSystem.English)
+    # matching_phrases = set(
+    # find_phrases(target_gematria_value, system=GematriaSystem.English)
+    # )
+
+    # print(f"Words with Gematria value {target_gematria_value}: {matching_words}")
+    # print(f"Phrases with Gematria value {target_gematria_value}: {matching_phrases}")
