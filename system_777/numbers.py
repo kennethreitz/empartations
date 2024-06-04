@@ -4,11 +4,32 @@ from functools import lru_cache
 from typing import List
 
 
+import nltk
+from nltk.corpus import words
+from nltk.tokenize import word_tokenize
+from nltk.util import ngrams
+
+
+# Prep NLTK.
+for corpus in ["brown", "words", "punkt"]:
+    nltk.download(corpus)
+
+
+# Define the Gematria systems
 class GematriaSystem(Enum):
     Hebrew = "Hebrew"
     English = "English"
     Simple = "Simple"
     Reverse = "Reverse"
+
+
+def extract_phrases_from_corpus(corpus, n: int) -> List[str]:
+    phrases = []
+    for fileid in corpus.fileids():
+        words = nltk.corpus.brown.words(fileid)
+        n_grams = ngrams(words, n)
+        phrases.extend([" ".join(gram) for gram in n_grams])
+    return phrases
 
 
 # Mappings for Hebrew, English, and Simple Gematria
@@ -377,21 +398,9 @@ SHORT_PHRASES = [
     "peace joy",
 ]
 
-try:
-    import nltk
-    from nltk.corpus import words
-    from nltk.tokenize import word_tokenize
+# Load the NLTK words corpus
+WORDS += words.words()
 
-    for corpus in ["words", "punkt"]:
-        if not nltk.download(corpus):
-            print(f"Failed to download the NLTK {corpus} corpus.")
-            sys.exit(1)
-
-    # Load the NLTK words corpus
-    WORDS += words.words()
-except ImportError:
-    print("NLTK is not installed. Skipping NLTK words corpus.")
-    sys.exit(1)
 
 # Memoize this function to avoid recalculating the same values
 
