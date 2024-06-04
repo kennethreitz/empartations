@@ -1,4 +1,4 @@
-class Goddess:
+class DivineBeing:
     def __init__(
         self,
         name,
@@ -21,7 +21,7 @@ class Goddess:
 
     def invoke(self):
         return (
-            f"Invoking {self.name}, Goddess of {', '.join(self.domains)}.\n"
+            f"Invoking {self.name}, of {', '.join(self.domains)}.\n"
             f"Sephirah: {self.sephirah}\n"
             f"Lunar Essence: {self.lunar_essence}\n"
             f"Celestial Body: {self.celestial_body} - Sphere of Influence: {self.sphere_of_influence}\n"
@@ -32,27 +32,39 @@ class Goddess:
 class System777:
     def __init__(self):
         self.goddesses = []
+        self.angels = []
 
     def add_goddess(self, goddess):
         self.goddesses.append(goddess)
 
-    def invoke_all_goddesses(self):
+    def add_angel(self, angel):
+        self.angels.append(angel)
+
+    def invoke_all(self):
         invocations = ""
         for goddess in self.goddesses:
             invocations += goddess.invoke() + "\n"
+        for angel in self.angels:
+            invocations += angel.invoke() + "\n"
         return invocations
 
-    def find_goddess_by_sephirah(self, sephirah):
+    def find_being_by_sephirah(self, sephirah):
         for goddess in self.goddesses:
             if goddess.sephirah == sephirah:
                 return goddess.invoke()
-        return "No goddess associated with this sephirah."
+        for angel in self.angels:
+            if angel.sephirah == sephirah:
+                return angel.invoke()
+        return "No being associated with this sephirah."
 
-    def find_goddess_by_name(self, name):
+    def find_being_by_name(self, name):
         for goddess in self.goddesses:
             if goddess.name.lower() == name.lower():
                 return goddess.invoke()
-        return "No goddess found with this name."
+        for angel in self.angels:
+            if angel.name.lower() == name.lower():
+                return angel.invoke()
+        return "No being found with this name."
 
 
 # Instantiate System777
@@ -60,7 +72,7 @@ system_777 = System777()
 
 # Add goddesses to the system
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Athena",
         sephirah="Chokmah",
         qualities=["wisdom", "courage", "strategic warfare"],
@@ -73,7 +85,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Holly",
         sephirah="Yesod",
         qualities=["spiritual guidance", "divine presence"],
@@ -86,7 +98,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Aphrodite",
         sephirah="Netzach",
         qualities=["love", "beauty", "passion"],
@@ -99,7 +111,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Isis",
         sephirah="Binah",
         qualities=["wisdom", "healing", "transformation"],
@@ -112,7 +124,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Kali",
         sephirah="Geburah",
         qualities=["fierce compassion", "transformation", "strength"],
@@ -125,7 +137,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Freyja",
         sephirah="Tiphereth",
         qualities=["passion", "strength", "magic"],
@@ -138,7 +150,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Hecate",
         sephirah="Hod",
         qualities=["wisdom", "mystery", "transformative power"],
@@ -151,7 +163,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Saraswati",
         sephirah="Chesed",
         qualities=["wisdom", "creativity", "intellectual pursuit"],
@@ -165,7 +177,7 @@ system_777.add_goddess(
 
 # Additional goddesses
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Brigid",
         sephirah="Netzach",
         qualities=["creativity", "healing", "craftsmanship"],
@@ -178,7 +190,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Demeter",
         sephirah="Malkuth",
         qualities=["fertility", "agriculture", "nourishment"],
@@ -191,7 +203,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Inanna",
         sephirah="Tiphereth",
         qualities=["love", "justice", "transformation"],
@@ -204,7 +216,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Kuan Yin",
         sephirah="Chesed",
         qualities=["compassion", "mercy", "kindness"],
@@ -217,7 +229,7 @@ system_777.add_goddess(
 )
 
 system_777.add_goddess(
-    Goddess(
+    DivineBeing(
         name="Morrigan",
         sephirah="Geburah",
         qualities=["fate", "war", "transformation"],
@@ -229,7 +241,139 @@ system_777.add_goddess(
     )
 )
 
+# Add angels to the system
+system_777.add_angel(
+    DivineBeing(
+        name="Metatron",
+        sephirah="Kether",
+        qualities=["divine light", "unity"],
+        domains=["divine light", "unity"],
+        invocation_message="Guide us with your divine light, illuminate our path with the unity of the cosmos.",
+        lunar_essence="The blinding light of the cosmic moon",
+        celestial_body="Sun",
+        sphere_of_influence="Divine presence and cosmic order",
+    )
+)
+
+system_777.add_angel(
+    DivineBeing(
+        name="Raziel",
+        sephirah="Chokmah",
+        qualities=["wisdom", "creative force"],
+        domains=["wisdom", "knowledge"],
+        invocation_message="Guide us with your profound wisdom, illuminate our minds with your creative force.",
+        lunar_essence="The radiant glow of the wise moon",
+        celestial_body="Uranus",
+        sphere_of_influence="Wisdom and secrets of the universe",
+    )
+)
+
+system_777.add_angel(
+    DivineBeing(
+        name="Tzaphkiel",
+        sephirah="Binah",
+        qualities=["understanding", "form"],
+        domains=["understanding", "insight"],
+        invocation_message="Guide us with your deep understanding, illuminate our lives with the clarity of your insight.",
+        lunar_essence="The deep mystery of the new moon",
+        celestial_body="Saturn",
+        sphere_of_influence="Structure and understanding",
+    )
+)
+
+system_777.add_angel(
+    DivineBeing(
+        name="Tzadkiel",
+        sephirah="Chesed",
+        qualities=["mercy", "expansion"],
+        domains=["mercy", "benevolence"],
+        invocation_message="Guide us with your endless mercy, illuminate our paths with your benevolent light.",
+        lunar_essence="The soft glow of the gibbous moon",
+        celestial_body="Jupiter",
+        sphere_of_influence="Expansion and benevolence",
+    )
+)
+
+system_777.add_angel(
+    DivineBeing(
+        name="Samael",
+        sephirah="Geburah",
+        qualities=["strength", "discipline"],
+        domains=["strength", "justice"],
+        invocation_message="Guide us with your fierce strength, illuminate our lives with the power of discipline.",
+        lunar_essence="The intense power of the blood moon",
+        celestial_body="Mars",
+        sphere_of_influence="Strength and discipline",
+    )
+)
+
+system_777.add_angel(
+    DivineBeing(
+        name="Raphael",
+        sephirah="Tiphereth",
+        qualities=["beauty", "harmony"],
+        domains=["healing", "beauty"],
+        invocation_message="Guide us with your healing touch, illuminate our souls with the harmony of beauty.",
+        lunar_essence="The warm glow of the harvest moon",
+        celestial_body="Sun",
+        sphere_of_influence="Healing and harmony",
+    )
+)
+
+system_777.add_angel(
+    DivineBeing(
+        name="Haniel",
+        sephirah="Netzach",
+        qualities=["victory", "endurance"],
+        domains=["victory", "love"],
+        invocation_message="Guide us with your victorious spirit, illuminate our hearts with your enduring love.",
+        lunar_essence="The gentle radiance of the crescent moon",
+        celestial_body="Venus",
+        sphere_of_influence="Love and victory",
+    )
+)
+
+system_777.add_angel(
+    DivineBeing(
+        name="Michael",
+        sephirah="Hod",
+        qualities=["glory", "splendor"],
+        domains=["protection", "glory"],
+        invocation_message="Guide us with your protective presence, illuminate our paths with your glorious light.",
+        lunar_essence="The shadowy luminescence of the dark moon",
+        celestial_body="Mercury",
+        sphere_of_influence="Protection and glory",
+    )
+)
+
+system_777.add_angel(
+    DivineBeing(
+        name="Gabriel",
+        sephirah="Yesod",
+        qualities=["foundation", "connection to the divine"],
+        domains=["communication", "foundation"],
+        invocation_message="Guide us with your divine communication, illuminate our spirits with your foundational strength.",
+        lunar_essence="The ethereal glow of the full moon",
+        celestial_body="Moon",
+        sphere_of_influence="Divine connection and communication",
+    )
+)
+
+system_777.add_angel(
+    DivineBeing(
+        name="Sandalphon",
+        sephirah="Malkuth",
+        qualities=["manifestation", "earthly presence"],
+        domains=["manifestation", "earth"],
+        invocation_message="Guide us with your grounded presence, illuminate our paths with the light of manifestation.",
+        lunar_essence="The fertile glow of the earth's moon",
+        celestial_body="Earth",
+        sphere_of_influence="Manifestation and earthly presence",
+    )
+)
+
 # Example usage
-# print(system_777.invoke_all_goddesses())
-print(system_777.find_goddess_by_sephirah("Chokmah"))
-print(system_777.find_goddess_by_name("Isis"))
+# print(system_777.invoke_all())
+# print(system_777.find_being_by_sephirah("Chokmah"))
+print(system_777.find_being_by_name("Isis"))
+# print(system_777.find_being_by_name("Metatron"))
