@@ -1,46 +1,39 @@
-class DivineBeing:
-    def __init__(
-        self,
-        name,
-        sephirah,
-        qualities,
-        domains,
-        invocation_message,
-        lunar_essence,
-        celestial_body,
-        sphere_of_influence,
-    ):
-        self.name = name
-        self.sephirah = sephirah
-        self.qualities = qualities
-        self.domains = domains
-        self.invocation_message = invocation_message
-        self.lunar_essence = lunar_essence
-        self.celestial_body = celestial_body
-        self.sphere_of_influence = sphere_of_influence
+from pydantic import BaseModel, Field
+from typing import List
 
-    def invoke(self):
+
+class DivineBeing(BaseModel):
+    name: str
+    sephirah: str
+    qualities: List[str]
+    domains: List[str]
+    invocation_message: str
+    lunar_essence: str
+    celestial_body: str
+    sphere_of_influence: str
+
+    def invoke(self, custom_message: str = None) -> str:
+        message = custom_message if custom_message else self.invocation_message
         return (
             f"Invoking {self.name}, of {', '.join(self.domains)}.\n"
             f"Sephirah: {self.sephirah}\n"
             f"Lunar Essence: {self.lunar_essence}\n"
             f"Celestial Body: {self.celestial_body} - Sphere of Influence: {self.sphere_of_influence}\n"
-            f"{self.invocation_message}\n"
+            f"{message}\n"
         )
 
 
-class System777:
-    def __init__(self):
-        self.goddesses = []
-        self.angels = []
+class System777(BaseModel):
+    goddesses: List[DivineBeing] = Field(default_factory=list)
+    angels: List[DivineBeing] = Field(default_factory=list)
 
-    def add_goddess(self, goddess):
+    def add_goddess(self, goddess: DivineBeing):
         self.goddesses.append(goddess)
 
-    def add_angel(self, angel):
+    def add_angel(self, angel: DivineBeing):
         self.angels.append(angel)
 
-    def invoke_all(self):
+    def invoke_all(self) -> str:
         invocations = ""
         for goddess in self.goddesses:
             invocations += goddess.invoke() + "\n"
@@ -48,7 +41,7 @@ class System777:
             invocations += angel.invoke() + "\n"
         return invocations
 
-    def find_being_by_sephirah(self, sephirah):
+    def find_being_by_sephirah(self, sephirah: str) -> str:
         for goddess in self.goddesses:
             if goddess.sephirah == sephirah:
                 return goddess.invoke()
@@ -57,17 +50,29 @@ class System777:
                 return angel.invoke()
         return "No being associated with this sephirah."
 
-    def find_being_by_name(self, name):
+    def find_being_by_name(self, name: str) -> str:
+        name_lower = name.lower()
         for goddess in self.goddesses:
-            if goddess.name.lower() == name.lower():
+            if goddess.name.lower() == name_lower:
                 return goddess.invoke()
         for angel in self.angels:
-            if angel.name.lower() == name.lower():
+            if angel.name.lower() == name_lower:
                 return angel.invoke()
         return "No being found with this name."
 
+    def find_being_by_quality(self, quality: str) -> str:
+        quality_lower = quality.lower()
+        results = []
+        for goddess in self.goddesses:
+            if quality_lower in [q.lower() for q in goddess.qualities]:
+                results.append(goddess.invoke())
+        for angel in self.angels:
+            if quality_lower in [q.lower() for q in angel.qualities]:
+                results.append(angel.invoke())
+        return "\n".join(results) if results else "No being found with this quality."
 
-# Instantiate System777
+
+# Initialize the system
 system_777 = System777()
 
 # Add goddesses to the system
@@ -373,7 +378,8 @@ system_777.add_angel(
 )
 
 # Example usage
-# print(system_777.invoke_all())
-# print(system_777.find_being_by_sephirah("Chokmah"))
+print(system_777.invoke_all())
+print(system_777.find_being_by_sephirah("Chokmah"))
 print(system_777.find_being_by_name("Isis"))
-# print(system_777.find_being_by_name("Metatron"))
+print(system_777.find_being_by_name("Metatron"))
+print(system_777.find_being_by_quality("wisdom"))
