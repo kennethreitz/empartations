@@ -1,0 +1,55 @@
+from ..models import DivineBeing
+
+# Add demons to the system
+demons = [
+    DivineBeing(
+        name="Lilith",
+        sephirah="Malkuth",
+        qualities=["independence", "seduction", "dark feminine power"],
+        domains=["night", "seduction", "rebellion"],
+        invocation_message="Guide us with your fierce independence, illuminate our paths with the power of your dark seduction.",
+        lunar_essence="The shadowy luminescence of the dark moon",
+        celestial_body="Moon",
+        sphere_of_influence="Independence and feminine power",
+    ),
+    DivineBeing(
+        name="Asmodeus",
+        sephirah="Geburah",
+        qualities=["lust", "wrath", "revenge"],
+        domains=["lust", "destruction", "punishment"],
+        invocation_message="Guide us with your relentless passion, illuminate our paths with the fire of your wrath.",
+        lunar_essence="The intense power of the blood moon",
+        celestial_body="Mars",
+        sphere_of_influence="Lust and revenge",
+    ),
+    DivineBeing(
+        name="Belial",
+        sephirah="Hod",
+        qualities=["lawlessness", "corruption", "wickedness"],
+        domains=["lawlessness", "anarchy", "deceit"],
+        invocation_message="Guide us with your unbound spirit, illuminate our paths with the chaos of your influence.",
+        lunar_essence="The shadowy luminescence of the dark moon",
+        celestial_body="Mercury",
+        sphere_of_influence="Deceit and anarchy",
+    ),
+    DivineBeing(
+        name="Leviathan",
+        sephirah="Yesod",
+        qualities=["envy", "chaos", "primordial power"],
+        domains=["water", "chaos", "envy"],
+        invocation_message="Guide us with your ancient power, illuminate our paths with the depths of your chaos.",
+        lunar_essence="The ethereal glow of the full moon",
+        celestial_body="Moon",
+        sphere_of_influence="Chaos and primordial power",
+    ),
+    DivineBeing(
+        name="Mammon",
+        sephirah="Netzach",
+        qualities=["greed", "wealth", "materialism"],
+        domains=["wealth", "greed", "avarice"],
+        invocation_message="Guide us with your boundless greed, illuminate our paths with the glitter of your wealth.",
+        lunar_essence="The gentle radiance of the crescent moon",
+        celestial_body="Venus",
+        sphere_of_influence="Materialism and greed",
+    ),
+]
