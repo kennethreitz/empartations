@@ -3,15 +3,13 @@ from enum import Enum
 from functools import lru_cache
 from typing import List
 
-
 import nltk
-from nltk.corpus import words
+from nltk.corpus import words, brown, gutenberg
 from nltk.tokenize import word_tokenize
 from nltk.util import ngrams
 
-
-# Prep NLTK.
-for corpus in ["brown", "words", "punkt"]:
+# Ensure the necessary NLTK data is downloaded
+for corpus in ["brown", "words", "punkt", "gutenberg"]:
     nltk.download(corpus)
 
 
@@ -23,16 +21,7 @@ class GematriaSystem(Enum):
     Reverse = "Reverse"
 
 
-def extract_phrases_from_corpus(corpus, n: int) -> List[str]:
-    phrases = []
-    for fileid in corpus.fileids():
-        words = nltk.corpus.brown.words(fileid)
-        n_grams = ngrams(words, n)
-        phrases.extend([" ".join(gram) for gram in n_grams])
-    return phrases
-
-
-# Mappings for Hebrew, English, and Simple Gematria
+# Mappings for Hebrew, English, Simple, and Reverse Gematria
 MAPPINGS = {
     GematriaSystem.Hebrew: {
         "a": 1,
@@ -149,6 +138,55 @@ MAPPINGS = {
 }
 
 
+# Define the Gematria calculation functions
+@lru_cache(maxsize=None)
+def calculate_gematria(
+    name: str, system: str | GematriaSystem = GematriaSystem.Hebrew
+) -> int:
+    # Capitalize, in case all–lowered.
+    try:
+        system = system.capitalize()
+    except AttributeError:
+        pass
+
+    # If system is a string, convert it to a GematriaSystem enum.
+    if isinstance(system, str):
+        system = GematriaSystem[system]
+
+    return sum(MAPPINGS[system].get(char, 0) for char in name.lower())
+
+
+# Extract phrases from NLTK corpus
+def extract_phrases_from_corpus(corpus, n: int) -> List[str]:
+    phrases = []
+    for fileid in corpus.fileids():
+        words = corpus.words(fileid)
+        n_grams = ngrams(words, n)
+        phrases.extend([" ".join(gram) for gram in n_grams])
+    return phrases
+
+
+# Define functions to find matching words and phrases
+def find_words(
+    target_value: int, *, system: str | GematriaSystem = GematriaSystem.Hebrew
+) -> List[str]:
+    matching_words = []
+    for word in WORDS:
+        if calculate_gematria(word, system) == target_value:
+            matching_words.append(word.capitalize())
+    return sorted(matching_words)
+
+
+def find_phrases(
+    target_value: int, *, system: str | GematriaSystem = GematriaSystem.Hebrew
+):
+    for phrase in EXTRACTED_PHRASES:
+        n = calculate_gematria(phrase, system=system)
+
+        if n == target_value:
+            yield (phrase)
+
+
 # Sample dictionary of words and phrases
 WORDS = [
     "Hello",
@@ -202,170 +240,6 @@ WORDS = [
     "Forgiveness",
     "Peace",
     "Joy",
-    "Chastity",
-    "Luna",
-    "Jade",
-    "Amber",
-    "Ruby",
-    "Sapphire",
-    "Emerald",
-    "Diamond",
-    "Gold",
-    "Silver",
-    "Bronze",
-    "Copper",
-    "Iron",
-    "Steel",
-    "Platinum",
-    "Titanium",
-    "Aluminum",
-    "Lead",
-    "Mercury",
-    "Uranium",
-    "Plutonium",
-    "Neptunium",
-    "Thorium",
-    "Radium",
-    "Polonium",
-    "Francium",
-    "Rubidium",
-    "Potassium",
-    "Sodium",
-    "Lithium",
-    "Calcium",
-    "Magnesium",
-    "Aluminum",
-    "Silicon",
-    "Phosphorus",
-    "Sulfur",
-    "Chlorine",
-    "Argon",
-    "Potassium",
-    "Calcium",
-    "Scandium",
-    "Titanium",
-    "Vanadium",
-    "Chromium",
-    "Manganese",
-    "Iron",
-    "Cobalt",
-    "Nickel",
-    "Copper",
-    "Zinc",
-    "Gallium",
-    "Germanium",
-    "Arsenic",
-    "Selenium",
-    "Bromine",
-    "Krypton",
-    "Rubidium",
-    "Strontium",
-    "Yttrium",
-    "Zirconium",
-    "Niobium",
-    "Molybdenum",
-    "Technetium",
-    "Ruthenium",
-    "Rhodium",
-    "Palladium",
-    "Silver",
-    "Cadmium",
-    "Indium",
-    "Tin",
-    "Antimony",
-    "Tellurium",
-    "Iodine",
-    "Xenon",
-    "Cesium",
-    "Barium",
-    "Lanthanum",
-    "Cerium",
-    "Praseodymium",
-    "Neodymium",
-    "Promethium",
-    "Samarium",
-    "Europium",
-    "Gadolinium",
-    "Terbium",
-    "Dysprosium",
-    "Holmium",
-    "Erbium",
-    "Thulium",
-    "Ytterbium",
-    "Lutetium",
-    "Hafnium",
-    "Tantalum",
-    "Tungsten",
-    "Rhenium",
-    "Osmium",
-    "Iridium",
-    "Platinum",
-    "Gold",
-    "Mercury",
-    "Thallium",
-    "Lead",
-    "Bismuth",
-    "Polonium",
-    "Astatine",
-    "Radon",
-    "Francium",
-    "Radium",
-    "Actinium",
-    "Thorium",
-    "Protactinium",
-    "Uranium",
-    "Neptunium",
-    "Plutonium",
-    "Americium",
-    "Curium",
-    "Berkelium",
-    "Californium",
-    "Einsteinium",
-    "Fermium",
-    "Mendelevium",
-    "Nobelium",
-    "Lawrencium",
-    "Rutherfordium",
-    "Dubnium",
-    "Seaborgium",
-    "Bohrium",
-    "Hassium",
-    "Meitnerium",
-    "Darmstadtium",
-    "Roentgenium",
-    "Copernicium",
-    "Nihonium",
-    "Flerovium",
-    "Moscovium",
-    "Livermorium",
-    "Tennessine",
-    "Oganesson",
-    "Hydrogen",
-    "Helium",
-    "Lithium",
-    "Beryllium",
-    "Boron",
-    "Carbon",
-    "Nitrogen",
-    "Oxygen",
-    "Fluorine",
-    "Neon",
-    "Sodium",
-    "Magnesium",
-    "Aluminum",
-    "Silicon",
-    "Phosphorus",
-    "Sulfur",
-    "Chlorine",
-    "Argon",
-    "Potassium",
-    "Calcium",
-    "Scandium",
-    "Titanium",
-    "Vanadium",
-    "Chromium",
-    "Manganese",
-    "Iron",
 ]
 
 SHORT_PHRASES = [
@@ -401,49 +275,19 @@ SHORT_PHRASES = [
 # Load the NLTK words corpus
 WORDS += words.words()
 
-
-# Memoize this function to avoid recalculating the same values
-
-
-@lru_cache(maxsize=None)
-def calculate_gematria(
-    name: str, system: str | GematriaSystem = GematriaSystem.Hebrew
-) -> int:
-    # Capitalize, in case all–lowered.
-    try:
-        system = system.capitalize()
-    except AttributeError:
-        pass
-
-    # If system is a string, convert it to a GematriaSystem enum.
-    if isinstance(system, str):
-        system = GematriaSystem[system]
-
-    return sum(MAPPINGS[system].get(char, 0) for char in name.lower())
+# Extract 3-gram phrases from the Brown corpus
+EXTRACTED_PHRASES = []
+for i in range(2, 4):
+    EXTRACTED_PHRASES += extract_phrases_from_corpus(gutenberg, i)
 
 
-def find_words(
-    target_value: int, *, system: str | GematriaSystem = GematriaSystem.Hebrew
-) -> List[str]:
+# Example usage
+# target_gematria_value = 777
+# matching_words = find_words(target_gematria_value, system=GematriaSystem.English)
+# matching_phrases = find_phrases(target_gematria_value, system=GematriaSystem.English)
 
-    matching_phrases = []
-
-    for phrase in WORDS:
-        if calculate_gematria(phrase, system) == target_value:
-            matching_phrases.append(phrase.capitalize())
-
-    return sorted(matching_phrases)
-
-
-def find_phrases(
-    target_value: int, *, system: str | GematriaSystem = GematriaSystem.Hebrew
-) -> List[str]:
-    matching_phrases = []
-    for phrase in SHORT_PHRASES:
-        tokenized_words = word_tokenize(phrase)
-        total_gematria = sum(
-            calculate_gematria(word, system=system) for word in tokenized_words
-        )
-        if total_gematria == target_value:
-            matching_phrases.append(phrase)
-    return matching_phrases
+# print(f"Words with Gematria value {target_gematria_value}: {matching_words}")
+# print(f"Phrases with Gematria value {target_gematria_value}: {matching_phrases}")
+# print(
+#     f"Extracted phrases with Gematria value {target_gematria_value}: {find_phrases(target_gematria_value, system=GematriaSystem.English)}"
+# )

@@ -7,11 +7,12 @@ from system_777.numbers import (
 )
 
 
-NAME = "SHEKINAH"
+NAME = "KENNETH ROBERT REITZ"
 SYSTEM = GematriaSystem.Hebrew
-GEMATRIA_VALUE = calculate_gematria(NAME, system=SYSTEM)
+# GEMATRIA_VALUE = calculate_gematria(NAME, system=SYSTEM)
 
-print(f"The gematria value of the name '{NAME}' is {GEMATRIA_VALUE}.")
-
-print("Possible words with the gematria value of the name:")
-print(find_words(GEMATRIA_VALUE))
+# print(f"The gematria value of the name '{NAME}' is {GEMATRIA_VALUE}.")
+# print()
+# print("Possible phrases with the gematria value of the name:")
+for phrase in find_phrases(calculate_gematria(NAME, system=SYSTEM)):
+    print(phrase)
