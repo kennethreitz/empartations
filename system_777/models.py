@@ -37,3 +37,6 @@ class DivineBeing(BaseModel):
         )
 
         return anglicized_name
+
+    def __str__(self):
+        return self.name
