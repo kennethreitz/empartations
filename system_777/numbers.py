@@ -179,97 +179,11 @@ def find_words(
     return sorted(list(set(matching_words)))
 
 
-# Sample dictionary of words and phrases
-WORDS = [
-    "Hello",
-    "World",
-    "Python",
-    "Programming",
-    "Divine",
-    "Mystery",
-    "Infinite",
-    "Love",
-    "Harmony",
-    "Balance",
-    "Justice",
-    "Truth",
-    "Wisdom",
-    "Understanding",
-    "Knowledge",
-    "Power",
-    "Glory",
-    "Victory",
-    "Eternity",
-    "Creation",
-    "Universe",
-    "Galaxies",
-    "Stars",
-    "Planets",
-    "Moon",
-    "Sun",
-    "Earth",
-    "Life",
-    "Light",
-    "Darkness",
-    "Goodness",
-    "Evil",
-    "Freedom",
-    "Destiny",
-    "Karma",
-    "Spirit",
-    "Soul",
-    "Mind",
-    "Body",
-    "Heart",
-    "Strength",
-    "Courage",
-    "Faith",
-    "Hope",
-    "Charity",
-    "Grace",
-    "Mercy",
-    "Compassion",
-    "Forgiveness",
-    "Peace",
-    "Joy",
-]
-
-SHORT_PHRASES = [
-    "hello world",
-    "python programming",
-    "divine mystery",
-    "infinite love",
-    "harmony balance",
-    "justice truth",
-    "wisdom understanding",
-    "knowledge power",
-    "glory victory",
-    "eternal creation",
-    "universal galaxies",
-    "shining stars",
-    "solar planets",
-    "lunar moon",
-    "bright sun",
-    "life on earth",
-    "light in darkness",
-    "goodness and evil",
-    "freedom destiny",
-    "karma spirit",
-    "soul mind",
-    "body heart",
-    "strength courage",
-    "faith hope",
-    "charity grace",
-    "mercy compassion",
-    "peace joy",
-]
-
 # Load the NLTK words corpus
-WORDS += words.words()
+WORDS = words.words()
 
 # Extract 3-gram phrases from the Brown corpus
 EXTRACTED_PHRASES = extract_phrases_from_corpus(gutenberg, N_GRAMS)
-
 EXTRACTED_PHRASES = set(EXTRACTED_PHRASES)
 
 

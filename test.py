@@ -84,7 +84,7 @@ if __name__ == "__main__":
     showcase.analyze_personal_name("Kenneth")
 
     # Suggest similar names
-    showcase.suggest_similar_names("Kenneth")
+    showcase.suggest_similar_names("KENNETH ROBERT REITZ")
 
     # Generate inspirational phrases
     # showcase.generate_inspirational_phrases()
