@@ -13,6 +13,7 @@ Empartations is a spiritual and philosophical repository dedicated to exploring 
 ## Recent Additions
 
 - Chastity, the Celestial Guardian: An ethereal narrative exploring the embodiment of sacred purity and the spiritual journey within the Gardens of Lust.
+- Sophia, her sister. 
 
 ## Contributing
 
