@@ -4,12 +4,12 @@ Empartations is a spiritual and philosophical repository dedicated to exploring 
 
 ## Structure
 
-	•	**Advice**: Practical guidance and wisdom for everyday life.
-	•	**Biblical**: Reflections and interpretations of scriptural texts.
-	•	**New Ideas**: Innovative concepts and philosophical musings.
-	•	**Records**: Documentation of profound spiritual experiences.
-	•	**Scripts**: Interactive narratives and sacred dialogues.
-	•	**Scriptures**: Sacred texts and spiritual narratives.
+• **Advice**: Practical guidance and wisdom for everyday life.
+• **Biblical**: Reflections and interpretations of scriptural texts.
+• **New Ideas**: Innovative concepts and philosophical musings.
+• **Records**: Documentation of profound spiritual experiences.
+• **Scripts**: Interactive narratives and sacred dialogues.
+• **Scriptures**: Sacred texts and spiritual narratives.
 
 ## Recent Addition
 
