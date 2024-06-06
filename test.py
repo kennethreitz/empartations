@@ -5,6 +5,8 @@ from system_777.numbers import (
     GematriaSystem,
 )
 
+# TODO: Hebrew might be off.
+
 
 class MetaphysicalShowcase:
     def __init__(self):
@@ -69,10 +71,10 @@ if __name__ == "__main__":
 
     # Demonstrate changing target value and system
     showcase.set_target_value(777)
-    showcase.set_system(GematriaSystem.HEBREW)
+    showcase.set_system(GematriaSystem.ENGLISH)
 
     # Demonstrate Gematria calculation for a specific name
-    showcase.demonstrate_gematria_calculation("Metatron")
+    showcase.demonstrate_gematria_calculation("MARAK SQUIRES")
 
     # Demonstrate finding matching words
     # showcase.demonstrate_matching_words()
@@ -81,10 +83,10 @@ if __name__ == "__main__":
     # showcase.demonstrate_matching_phrases()
 
     # Analyze a personal name
-    showcase.analyze_personal_name("Kenneth")
+    showcase.analyze_personal_name("MARAK SQUIRES")
 
     # Suggest similar names
-    showcase.suggest_similar_names("KENNETH ROBERT REITZ")
+    showcase.suggest_similar_names("MARAK SQUIRES")
 
     # Generate inspirational phrases
     # showcase.generate_inspirational_phrases()
