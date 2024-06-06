@@ -11,9 +11,9 @@ Empartations is a spiritual and philosophical repository dedicated to exploring 
 - **Scripts**: Interactive narratives and sacred dialogues.
 - **Scriptures**: Sacred texts and spiritual narratives.
 
-## Recent Addition
+## Recent Additions
 
-Chastity, the Celestial Guardian: An ethereal narrative exploring the embodiment of sacred purity and the spiritual journey within the Gardens of Lust.
+- Chastity, the Celestial Guardian: An ethereal narrative exploring the embodiment of sacred purity and the spiritual journey within the Gardens of Lust.
 
 ## Contributing
 
