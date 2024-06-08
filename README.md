@@ -2,6 +2,14 @@
 
 Welcome to **Empartations**, a repository dedicated to exploring spiritual and philosophical themes through divine archetypes, sacred narratives, and metaphysical reflections.
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Contents](#contents)
+- [Recent Additions](#recent-additions)
+- [Get Involved](#get-involved)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Contents
 
 - **Advice**: Practical wisdom for everyday living, categorized for ease of use.
