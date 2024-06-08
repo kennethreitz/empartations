@@ -1,6 +1,6 @@
 # Empartations
 
-Empartations is a spiritual and philosophical repository dedicated to exploring divine archetypes, sacred narratives, and metaphysical themes. It offers a collection of insights, wisdom, and reflections that invite deep contemplation and connection with the divine.
+Welcome to Empartations, a repository dedicated to exploring spiritual and philosophical themes through divine archetypes, sacred narratives, and metaphysical reflections.
 
 ## Structure
 
