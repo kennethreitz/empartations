@@ -10,7 +10,7 @@ from nltk.util import ngrams
 for corpus in ["brown", "words", "punkt", "gutenberg"]:
     nltk.download(corpus)
 
-N_GRAMS = 4
+N_GRAMS = 5
 
 
 # Define the Gematria systems
