@@ -70,23 +70,23 @@ if __name__ == "__main__":
     showcase = MetaphysicalShowcase()
 
     # Demonstrate changing target value and system
-    showcase.set_target_value(777)
+    showcase.set_target_value(1140)
     showcase.set_system(GematriaSystem.ENGLISH)
 
     # Demonstrate Gematria calculation for a specific name
-    showcase.demonstrate_gematria_calculation("MARAK SQUIRES")
+    showcase.demonstrate_gematria_calculation("KENNETH ROBERT REITZ")
 
     # Demonstrate finding matching words
     # showcase.demonstrate_matching_words()
 
     # Demonstrate finding matching phrases
-    # showcase.demonstrate_matching_phrases()
+    showcase.demonstrate_matching_phrases()
 
     # Analyze a personal name
-    showcase.analyze_personal_name("MARAK SQUIRES")
+    # showcase.analyze_personal_name("SARAH LYNN REITZ")
 
     # Suggest similar names
-    showcase.suggest_similar_names("MARAK SQUIRES")
+    # showcase.suggest_similar_names("SARAH LYNN REITZ")
 
     # Generate inspirational phrases
     # showcase.generate_inspirational_phrases()
