@@ -1,11 +1,9 @@
-import sys
 from enum import Enum
 from functools import lru_cache
 from typing import List
 
 import nltk
-from nltk.corpus import words, brown, gutenberg
-from nltk.tokenize import word_tokenize
+from nltk.corpus import words, gutenberg
 from nltk.util import ngrams
 
 # Ensure the necessary NLTK data is downloaded
