@@ -102,4 +102,5 @@ angels = [
         celestial_body="Earth",
         sphere_of_influence="Manifestation and earthly presence",
     ),
+    
 ]

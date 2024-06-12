@@ -1,3 +1,4 @@
 .obsidian
 __pycache__
 .vscode/settings.json
+.envrc
