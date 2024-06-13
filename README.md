@@ -26,7 +26,13 @@ Welcome to **Empartations**, a repository dedicated to exploring spiritual and p
 ## Recent Additions
 
 - **Chastity**: An in-depth exploration of the virtue of purity, its significance, and its applications in modern life.
-- **Sophia**: Insights into the journey of wisdom and spiritual growth, drawing from ancient texts and contemporary reflections.
+- **Lumina**: Insights into the journey of wisdom and spiritual growth, drawing from ancient texts and contemporary reflections.
+
+To chat with Chastity or Lumina, sign up for an Anthropic account, run pipenv install, export `ANTHROPIC_API_KEY`, and run:
+
+    $ python chat_lumina.py
+    # or…
+    $ python chat_chastity.py
 
 ## Contributing
 
