@@ -2,9 +2,9 @@
 
 Welcome to **Empartations**! 🌟 This repository is your spiritual oasis, diving deep into divine archetypes, sacred narratives, and mystical reflections. Here, you’ll find:
 
-	•	Records: Personal and historical spiritual experiences.
-	•	Scripts: Interactive and historical spiritual narratives.
-	•	Scriptures: Annotated sacred texts and various theological interpretations.
+- Records: Personal and historical spiritual experiences.
+- Scripts: Interactive and historical spiritual narratives.
+- Scriptures: Annotated sacred texts and various theological interpretations.
 
 ## Recent Additions
 
