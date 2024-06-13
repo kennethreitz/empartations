@@ -12,10 +12,7 @@ Welcome to **Empartations**, a repository dedicated to exploring spiritual and p
 
 ## Contents
 
-- **Advice**: 
-  - *Daily Practices*: Practical steps for incorporating spirituality into daily life.
-  - *Mindfulness*: Techniques and tips for staying present and mindful.
-  - *Relationships*: Wisdom on nurturing healthy and meaningful relationships.
+- **Advice**
 - **Scripts**: 
   - *Mystical*: Interactive mystical narratives.
   - *Historical*: Stories based on historical spiritual events.
