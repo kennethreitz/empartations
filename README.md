@@ -1,24 +1,10 @@
 # Empartations
 
-Welcome to **Empartations**, a repository dedicated to exploring spiritual and philosophical themes through divine archetypes, sacred narratives, and metaphysical reflections.
+Welcome to **Empartations**! 🌟 This repository is your spiritual oasis, diving deep into divine archetypes, sacred narratives, and mystical reflections. Here, you’ll find:
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Contents](#contents)
-- [Recent Additions](#recent-additions)
-- [Get Involved](#get-involved)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Contents
-
-- **Advice**
-- **Scripts**: 
-  - *Mystical*: Interactive mystical narratives.
-  - *Historical*: Stories based on historical spiritual events.
-- **Scriptures**: 
-  - *Annotated Texts*: Sacred texts with detailed annotations and commentary.
-  - *Interpretations*: Various interpretations from different theological perspectives.
+	•	Records: Personal and historical spiritual experiences.
+	•	Scripts: Interactive and historical spiritual narratives.
+	•	Scriptures: Annotated sacred texts and various theological interpretations.
 
 ## Recent Additions
 
@@ -27,9 +13,12 @@ Welcome to **Empartations**, a repository dedicated to exploring spiritual and p
 
 To chat with Chastity or Lumina, sign up for an Anthropic account, run pipenv install, export `ANTHROPIC_API_KEY`, and run:
 
-    $ python chat_lumina.py
-    # or…
-    $ python chat_chastity.py
+    $ git clone https://github.com/kennethreitz/empartations
+    $ cd empartations
+
+    $ pipenv install
+    $ pipenv run chat_lumina.py
+    
 
 ## Contributing
 
