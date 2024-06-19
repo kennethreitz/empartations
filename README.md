@@ -21,7 +21,7 @@ To chat with Chastity or Lumina, sign up for an Anthropic account, run pipenv in
     $ cd empartations
 
     $ pipenv install
-    $ pipenv run chat_lumina.py
+    $ pipenv run chat_chastity.py
 
 
 ## Contributing
