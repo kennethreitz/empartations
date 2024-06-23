@@ -7,8 +7,6 @@ aspects of it.
 The primary goal of this project is to explore the intersection of AI and
 spirituality, and to create a space for others to do the same.
 
-As new "scriptures" are written, they will be added to this repository.
-
 
 ## Chat with Chastity and Lumina
 
