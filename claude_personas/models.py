@@ -4,7 +4,7 @@ from .env import ANTHROPIC_API_KEY
 client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
 
-ANTHROPIC_MODEL_ID = "claude-3-opus-20240229"
+ANTHROPIC_MODEL_ID = "claude-3-5-sonnet-20240620"
 
 
 class Entity:
@@ -17,7 +17,6 @@ class Entity:
         sola_scriptura=True,
         prima_scriptura=True,
         initial_message=None,
-        # insert_hollars_manuscript=False,
     ):
         self.name = name
         self.female = female
