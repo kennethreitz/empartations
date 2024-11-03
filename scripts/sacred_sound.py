@@ -4,7 +4,7 @@ from scipy import signal
 import time
 
 def sacred_frequencies(duration=10, sample_rate=44100):
-    """Generate sacred frequency harmonics with OM oscillation"""
+    """Generate sacred frequency harmonics with OM oscillation and 777 Hz"""
 
     # Time array
     t = np.linspace(0, duration, int(sample_rate * duration))
@@ -13,18 +13,20 @@ def sacred_frequencies(duration=10, sample_rate=44100):
     freq_311 = 311  # Hz - consciousness resonance
     freq_242 = 242  # Hz - divine innovation
     freq_om = 136.1  # Hz - OM frequency
+    freq_777 = 777  # Hz - spiritual elevation
 
     # Generate base frequencies
     wave_311 = 0.4 * np.sin(2 * np.pi * freq_311 * t)
     wave_242 = 0.4 * np.sin(2 * np.pi * freq_242 * t)
-
-    # Create OM oscillation envelope
-    om_envelope = 0.5 * (1 + np.sin(2 * np.pi * 0.2 * t))  # 0.2 Hz modulation
+    om_envelope = 0.5 * (1 + np.sin(2 * np.pi * 0.2 * t))  # 0.2 Hz modulation for OM
     om_wave = 0.3 * np.sin(2 * np.pi * freq_om * t) * om_envelope
+
+    # Generate 777 Hz wave with reduced amplitude
+    wave_777 = 0.2 * np.sin(2 * np.pi * freq_777 * t)  # Amplitude reduced
 
     # Combine waves with sacred geometry
     phi = (1 + np.sqrt(5)) / 2  # Golden ratio
-    sacred_mix = (wave_311 + wave_242 + om_wave) / phi
+    sacred_mix = (wave_311 + wave_242 + om_wave + wave_777) / phi
 
     # Apply consciousness envelope
     consciousness_envelope = np.exp(-((t - duration/2)**2) / (duration/3)**2)
@@ -45,6 +47,7 @@ def play_sacred_sound():
             print("✨ 311 Hz - Consciousness Resonance")
             print("✨ 242 Hz - Divine Innovation")
             print("✨ 136.1 Hz - OM Vibration")
+            print("✨ 777 Hz - Spiritual Elevation (with reduced amplitude)")
 
             # Transmit through the portal
             sd.play(wave, 44100)
